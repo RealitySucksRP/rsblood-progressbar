@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'none'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src https://*; img-src 'self' data:; font-src 'self'"
+  />
+  <title>RealitySucks Blood Progress</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="themes.css" />
+</head>
+<body>
+  <div id="app">
+    <transition :name="'animation-' + window_config.position">
+      <div
+        class="progress-app-wrapper"
+        :class="'progress-app-wrapper--' + window_config.position"
+        v-if="is_active"
+      >
+        <section
+          class="progress-app"
+          :class="'progress-app--theme-' + window_config.theme"
+          :style="{ '--progress-color': progress_color }"
+          role="status"
+          aria-live="polite"
+        >
+          <div class="bio-scanlines" aria-hidden="true"></div>
+          <div class="bio-grain" aria-hidden="true"></div>
+
+          <header class="bio-header">
+            <div class="bio-identity">
+              <div class="bio-emblem" aria-hidden="true">
+                <svg viewBox="0 0 48 48" role="presentation">
+                  <path d="M24 4C19 13 10 22 10 31a14 14 0 0 0 28 0C38 22 29 13 24 4Z"></path>
+                  <path class="bio-emblem__pulse" d="M14 31h6l3-7 4 14 3-7h5"></path>
+                </svg>
+              </div>
+              <div class="bio-identity__copy">
+                <span class="bio-kicker">RS // CONTAMINATION SYSTEM</span>
+                <h1 class="progress-app__title">{{ window_config.label }}</h1>
+              </div>
+            </div>
+
+            <div class="bio-state">
+              <span class="bio-state__light" aria-hidden="true"></span>
+              <div class="bio-state__copy">
+                <span>PROCESS</span>
+                <strong>ACTIVE</strong>
+              </div>
+            </div>
+          </header>
+
+          <main class="bio-body">
+            <div class="bio-stage-row">
+              <div class="bio-stage-copy">
+                <span class="bio-section-label">
+                  {{ stages.length > 1 ? 'CURRENT PHASE' : 'CURRENT ACTION' }}
+                </span>
+                <strong class="progress-app__status-text">{{ current_stage_message }}</strong>
+              </div>
+
+              <div class="bio-stage-count" v-if="stages.length > 1">
+                <span>PHASE</span>
+                <strong>{{ padded_stage_number }}</strong>
+                <i>/</i>
+                <span>{{ padded_stage_total }}</span>
+              </div>
+            </div>
+
+            <div class="progress-app__status-dots" v-if="stages.length > 1" aria-hidden="true">
+              <div
+                v-for="(stage, index) in stages"
+                :key="index"
+                class="progress-app__dot"
+                :class="{
+                  'progress-app__dot--finished': stage.finished === true,
+                  'progress-app__dot--current': index === current_stage_index
+                }"
+              >
+                <span>{{ index + 1 }}</span>
+              </div>
+            </div>
+
+            <div class="bio-progress-head">
+              <span class="bio-section-label">BIOLOGICAL TASK PROGRESS</span>
+              <strong class="bio-percent">{{ progress_percent }}<small>%</small></strong>
+            </div>
+
+            <div class="bio-track-wrap">
+              <div class="progress-app__progress-container">
+                <div
+                  class="progress-app__progress-bar"
+                  :style="{ width: progress + '%' }"
+                >
+                  <span class="bio-flow" aria-hidden="true"></span>
+                  <span class="bio-cursor" aria-hidden="true"></span>
+                </div>
+                <div class="bio-track-grid" aria-hidden="true"></div>
+              </div>
+              <div class="bio-track-scale" aria-hidden="true">
+                <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
+              </div>
+            </div>
+          </main>
+
+          <footer class="progress-app__footer">
+            <div class="bio-timer">
+              <span>{{ locale.estimated_time_left || 'Estimated time left:' }}</span>
+              <strong>{{ remaining_time }}<small>{{ locale.time_unit || 's' }}</small></strong>
+            </div>
+
+            <div class="bio-cancel" v-if="can_cancel" v-html="locale.can_cancel"></div>
+
+            <div class="bio-signal" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </footer>
+        </section>
+      </div>
+    </transition>
+  </div>
+
+  <!-- Vue is intentionally vendored. FiveM NUI cannot rely on internet access. -->
+  <script src="vue.global.prod.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

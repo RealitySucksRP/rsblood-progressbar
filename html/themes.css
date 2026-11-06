@@ -1,0 +1,90 @@
+/* ================================================================
+   rsblood-progressbar | themes.css v3.2
+   Existing `theme` task field selects any style below.
+   ================================================================ */
+
+.progress-app,
+.progress-app--theme-default,
+.progress-app--theme-blood {
+  --accent: #b5121b;
+  --accent-hot: #ff3b3f;
+  --accent-muted: #8c2227;
+  --accent-rgb: 225, 37, 43;
+  --fill-dark: #3a0508;
+  --fill-hot: #ff5257;
+  --panel-top: rgba(17, 7, 9, 0.97);
+  --panel-bottom: rgba(7, 4, 5, 0.985);
+  --panel-highlight: rgba(121, 14, 21, 0.12);
+  --border-strong: #502127;
+  --border-soft: rgba(149, 47, 53, 0.22);
+  --track-bg: #120507;
+  --track-idle: #251014;
+  --text-primary: #f2e5e5;
+  --text-secondary: #d9b8ba;
+  --text-muted: #96686c;
+  --text-dim: #704b4e;
+  --text-faint: #442d30;
+}
+
+.progress-app--theme-infection {
+  --accent: #6ca40f;
+  --accent-hot: #b7ef38;
+  --accent-muted: #557d1a;
+  --accent-rgb: 149, 210, 39;
+  --fill-dark: #1b2d06;
+  --fill-hot: #d1ff59;
+  --panel-top: rgba(10, 15, 7, 0.97);
+  --panel-bottom: rgba(4, 7, 3, 0.985);
+  --panel-highlight: rgba(102, 157, 25, 0.11);
+  --border-strong: #344b1c;
+  --border-soft: rgba(110, 156, 44, 0.22);
+  --track-bg: #091005;
+  --track-idle: #17220e;
+  --text-primary: #edf3e5;
+  --text-secondary: #c7d4b7;
+  --text-muted: #748364;
+  --text-dim: #58654d;
+  --text-faint: #35402e;
+}
+
+.progress-app--theme-medical {
+  --accent: #17879e;
+  --accent-hot: #54d7ef;
+  --accent-muted: #28788a;
+  --accent-rgb: 52, 193, 219;
+  --fill-dark: #07303a;
+  --fill-hot: #72e6f6;
+  --panel-top: rgba(6, 14, 17, 0.97);
+  --panel-bottom: rgba(3, 7, 9, 0.985);
+  --panel-highlight: rgba(21, 139, 163, 0.12);
+  --border-strong: #1d4650;
+  --border-soft: rgba(53, 147, 166, 0.22);
+  --track-bg: #041014;
+  --track-idle: #0d252b;
+  --text-primary: #e6f3f5;
+  --text-secondary: #bad4d9;
+  --text-muted: #66828a;
+  --text-dim: #4a656c;
+  --text-faint: #2b3f44;
+}
+
+.progress-app--theme-tactical {
+  --accent: #bd7715;
+  --accent-hot: #ffb33a;
+  --accent-muted: #8c641f;
+  --accent-rgb: 235, 157, 43;
+  --fill-dark: #382006;
+  --fill-hot: #ffc05b;
+  --panel-top: rgba(16, 13, 7, 0.97);
+  --panel-bottom: rgba(7, 6, 3, 0.985);
+  --panel-highlight: rgba(167, 103, 14, 0.11);
+  --border-strong: #514022;
+  --border-soft: rgba(156, 118, 48, 0.22);
+  --track-bg: #110c04;
+  --track-idle: #261d0d;
+  --text-primary: #f2eee5;
+  --text-secondary: #d6cbb5;
+  --text-muted: #88785e;
+  --text-dim: #685d4a;
+  --text-faint: #40382c;
+}
