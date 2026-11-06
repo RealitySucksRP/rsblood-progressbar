@@ -247,4 +247,4 @@ The command starts a five-second cancellable test bar. Set dev mode back to `fal
 
 Version 3.2.0 has been Lua 5.4 parsed, JavaScript syntax-checked, exercised through Lua and JavaScript lifecycle harnesses, and package-audited. A final live FiveM runtime pass is still required before calling it production-verified.
 
-Free community release by **William Brito / RealitySucksRP**. Engine foundation credited to keep-progressbar.
+Free community release by **RealitySucksRP**. Engine foundation credited to keep-progressbar.

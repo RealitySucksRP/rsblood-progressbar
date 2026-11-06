@@ -7,3 +7,5 @@ A horror-themed FiveM progress bar with four built-in themes, staged actions, an
 Run only one resource that provides the progressbar interface.
 
 [Package documentation](PACKAGE-README.md)
+
+[Developer guide](DEVELOPER-API.md)

@@ -1,33 +1,6 @@
-# rsblood-progressbar — Engineering Handoff
+# RS Blood Progressbar developer guide
 
-**Current baseline:** v3.2.0  
-**Date:** 2026-07-28  
-**Resource:** `rsblood-progressbar`  
-**Author:** William Brito — RealitySucksRP
-
-A blood/horror themed FiveM progress bar with a framework-independent native API plus compatibility adapters for the common QBCore/Qbox `progressbar`, ESX `esx_progressbar`, and ox-style data shapes.
-
-Version 3.2.0 preserves the v3.1.0 bridge and lifecycle baseline while replacing the original flat blood panel with the approved compact RS Contamination System presentation. The visual pass is still fully self-contained: no remote fonts, images, icon libraries, or CDN calls.
-
----
-
-## v3.2.0 visual baseline
-
-The bridge contract and Lua lifecycle remain the locked v3.1.0 behavior. The v3.2.0 work is an NUI presentation pass:
-
-- compact bottom-center **RS Contamination System** panel;
-- real task labels and stage messages instead of hard-coded fake phase names;
-- visible phase count and completed/current stage rail;
-- thicker segmented progress track with percentage and remaining time;
-- self-contained blood-drop/pulse emblem drawn as inline SVG;
-- responsive layout for smaller resolutions;
-- reduced-motion support;
-- existing task `theme` field now selects `default`/`blood`, `infection`, `medical`, or `tactical`;
-- no remote fonts, image files, Font Awesome, CDN calls, or new runtime dependencies.
-
-Do not replace the inline emblem with an external icon dependency. Do not restore the old fixed `INITIATE / EXTRACT / ANALYZE / COMPLETE` labels because they were inaccurate for arbitrary integrations.
-
----
+Integration APIs, task fields, and lifecycle behavior for resource developers.
 
 ## 1. File map and load order
 
@@ -65,7 +38,7 @@ html/vue.global.prod.js
 
 Vue is vendored locally. The former Google Fonts `@import` was also removed and replaced with system-font stacks. Do not add remote NUI dependencies.
 
-The obsolete root-level `client.lua` remains deleted. Do not restore it.
+
 
 ---
 
@@ -467,20 +440,6 @@ if resourceName ~= GetCurrentResourceName() then return end
 Previously, the generic `onResourceStop` handler could clean the active progress task whenever **any** client resource stopped.
 
 Shutdown cleanup suppresses gameplay completion callbacks while still releasing states and props.
-
----
-
-## 13. README corrections
-
-The v3.0.0 README contained three integration traps:
-
-1. It called `exports['rsblood-progressbar']:Progress(...)`, but that direct export did not exist.
-2. It showed top-level `disableMovement` / `disableCombat`, which the engine ignored.
-3. It showed `animation.dict` / `animation.clip` plus task `onFinish` / `onCancel`, which the engine did not consume.
-
-Version 3.2.0 supports those documented shapes and registers the direct export.
-
-The instruction to delete and replace ox_lib's `progress.lua` has been removed. The README now documents direct adapter usage and the exact limitation for third-party resources hardcoded to `lib.progressBar`.
 
 ---
 
